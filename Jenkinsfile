@@ -10,7 +10,7 @@ pipeline {
 		git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
 		
 		withMaven(maven: 'M3'){
-			sh "deploy"
+			sh "mvn deploy"
 		}
 		sh "ls"
 		sh "cd target && ls"

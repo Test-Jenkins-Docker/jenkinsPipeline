@@ -9,7 +9,7 @@ pipeline {
                 echo 'Building..'
 		git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
 		
-		withMaven(maven: 'M3'){
+		withMaven(maven: 'M3', mavenSettingsFilePath: '$root/MavenSettings/settingsJDK.xml'){
 			sh "mvn deploy"
 		}
 		sh "ls"

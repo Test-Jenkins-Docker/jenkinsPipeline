@@ -9,7 +9,6 @@ pipeline {
 			timestamps{
 				echo 'Comparing SVN...'
 			}
-			svn 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
 		}
 	}
        	stage('Git and Maven Deploy') {

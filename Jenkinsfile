@@ -8,6 +8,8 @@ pipeline {
 		steps{
 			timestamps{
 				echo 'Comparing SVN...'
+				echo BRANCH_NAME
+				echo CHANGE_ID
 				
 			}
 		}
@@ -16,6 +18,7 @@ pipeline {
        		steps {
 			timestamps{
                 		git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
+
 				withMaven(maven: 'M3', mavenSettingsConfig: '43ab0c61-4028-4e36-a268-8928676de664'){
 					sh "mvn clean deploy"
 				}

@@ -20,7 +20,6 @@ pipeline {
 				}
 				sh "ls"
 				sh "cd target && ls"
-				archiveArtifacts artifacts: 'target/myproject-0.0.1-SNAPSHOT.jar', onlyIfSuccessful: true
 			}
 		}
         }
@@ -32,14 +31,18 @@ pipeline {
 				sh "ls"
 				git 'https://github.com/Test-Jenkins-Docker/testDockerFileRepo.git'
 				sh "ls"
+				sh "cd target && ls"
+				sh "docker info"
+				sh "docker build -t xactatest ."
+				sh "docker images"
 			}
         	}
 	}
         
-	stage('Deploy') {
+	stage('Deploy to Kubernetes') {
 		steps {
 			timestamps{
-        			echo 'Deploying....'
+        			echo 'Deploying to Kubernetes....'
 			}
           	}
         }

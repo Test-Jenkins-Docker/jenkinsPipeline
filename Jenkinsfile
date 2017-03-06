@@ -5,12 +5,13 @@ pipeline {
 
     stages {
     	stage('Compare SVN'){
+		echo 'Comparing SVN...'
 		svn 'https://github.com/Test-Jenkins-Docker/jenkinsPipeline.git'
 	}
        	stage('Git and Maven Deploy') {
        		steps {
 			timestamps{
-	               		echo 'Building..'
+	               		echo 'Building...'
 				echo pwd()
 				git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
 				
@@ -26,7 +27,7 @@ pipeline {
 	stage('Test') {
 		steps {
 			timestamps{
-	        		echo 'Testing..'
+	        		echo 'Testing...'
 			}
         	}
 	}

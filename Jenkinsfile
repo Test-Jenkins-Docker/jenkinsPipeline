@@ -8,8 +8,8 @@ pipeline {
 		steps{
 			timestamps{
 				echo 'Comparing SVN...'
-				svn 'https://github.com/Test-Jenkins-Docker/jenkinsPipeline.git'
 			}
+			svn 'https://github.com/Test-Jenkins-Docker/jenkinsPipeline.git'
 		}
 	}
        	stage('Git and Maven Deploy') {

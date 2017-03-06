@@ -8,13 +8,16 @@ pipeline {
 		steps{
 			timestamps{
 				echo 'Comparing SVN...'
+				
 			}
 		}
 	}
        	stage('Git and Maven Deploy') {
        		steps {
 			timestamps{
-	               		git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
+                		if(git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'){
+					echo 'testing this out'
+				}
 				withMaven(maven: 'M3', mavenSettingsConfig: '43ab0c61-4028-4e36-a268-8928676de664'){
 					sh "mvn clean deploy"
 				}

@@ -15,7 +15,8 @@ pipeline {
 					sh "mvn clean deploy"
 				}
 				sh "ls"
-			}	sh "cd target && ls"
+				sh "cd target && ls"
+			}
 	            }
         }
 

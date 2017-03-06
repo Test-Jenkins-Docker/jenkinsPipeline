@@ -8,7 +8,7 @@ pipeline {
        		steps {
 			timestamps{
 	               		echo 'Building..'
-				pwd()
+				echo pwd()
 				git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
 				
 				withMaven(maven: 'M3', mavenSettingsFilePath: '../../settingsJDK.xml'){

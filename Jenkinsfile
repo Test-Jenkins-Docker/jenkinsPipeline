@@ -2,8 +2,8 @@
 
 pipeline {
     agent any
-timestamps{
     stages {
+timestamps{
     	stage('Compare SVN'){
 		steps{
 			

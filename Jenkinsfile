@@ -10,7 +10,8 @@ pipeline {
 				echo 'Comparing SVN...'
 				echo env.BRANCH_NAME
 				echo env.CHANGE_ID
-				
+				def testing = new org.foo.sharedMethods()
+				testing.printHi()
 			}
 		}
 	}

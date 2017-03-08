@@ -8,9 +8,9 @@ pipeline {
 		steps{
 	timestamps{		
 				echo 'Comparing SVN...'
-				echo '${gitName}'
-				echo '${dockerRepo}'
-				echo '${dockerFileName}'
+				echo ${gitName}
+				echo ${dockerRepo}
+				echo ${dockerFileName}
 				script{
 					def testing = new org.foo.sharedMethods()
 					testing.printHi()

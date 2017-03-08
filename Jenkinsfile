@@ -8,19 +8,20 @@ pipeline {
 		steps{
 	timestamps{		
 				echo 'Comparing SVN...'
-				echo env.BRANCH_NAME
-				echo env.CHANGE_ID
+				echo '${gitName}'
+				echo '${dockerRepo}'
+				echo '${dockerFileName}'
 				script{
 					def testing = new org.foo.sharedMethods()
 					testing.printHi()
-			}	
+				}
 			}
 		}
 	}
        	stage('Git and Maven Deploy') {
        		steps {
 			timestamps{
-                		git 'https://github.com/Test-Jenkins-Docker/testFullPipe.git'
+                		git 'https://github.com/Test-Jenkins-Docker/${gitName}'
 
 				withMaven(maven: 'M3', mavenSettingsConfig: '43ab0c61-4028-4e36-a268-8928676de664'){
 					sh "mvn clean deploy"
@@ -36,11 +37,11 @@ pipeline {
 			timestamps{
 				echo 'Building Docker Container...'
 				sh "ls"
-				git 'https://github.com/Test-Jenkins-Docker/testDockerFileRepo.git'
+				git 'https://github.com/Test-Jenkins-Docker/${dockerRepo}'
 				sh "ls"
 				sh "cd target && ls"
 				sh "docker info"
-				sh "docker build -t xactatest ."
+				sh "docker build -t ${dockerFileName} ."
 				sh "docker images"
 			}
         	}
